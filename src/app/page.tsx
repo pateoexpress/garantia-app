@@ -1,5 +1,5 @@
 import db from "@/db/db";
-import { Record, columns } from "./__components/columns";
+import { Record, columns } from "./_components/columns";
 import { DataTable } from "@/components/ui/data-table";
 
 async function getData(): Promise<Record[]> {
