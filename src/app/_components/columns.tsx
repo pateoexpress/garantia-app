@@ -42,11 +42,6 @@ const ActionCell: React.FC<{ payment: Record }> = ({ payment }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Ações</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => navigator.clipboard.writeText(payment.xata_id)}
-          >
-            Copiar ID
-          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => router.push(`/processo/${payment.xata_id}`)}
@@ -85,8 +80,14 @@ export const columns: ColumnDef<Record>[] = [
   {
     accessorKey: "os",
     header: () => <div className="">OS</div>,
+    filterFn: (row, columnId, filterValue) => {
+      const osValue = row.getValue(columnId) as number;
+      const osValueStr = osValue.toString();
+      const filterValueStr = filterValue.toString();
+      return osValueStr.includes(filterValueStr);
+    },
     cell: ({ row }) => {
-      const rowValue = row.getValue("os") as string;
+      const rowValue = row.getValue("os") as number;
       return <div className="">{rowValue}</div>;
     },
   },
@@ -116,8 +117,6 @@ export const columns: ColumnDef<Record>[] = [
       return <div className="">{rowValue.toUpperCase()}</div>;
     },
   },
-    
-
   {
     id: "actions",
     cell: ({ row }) => <ActionCell payment={row.original} />,
