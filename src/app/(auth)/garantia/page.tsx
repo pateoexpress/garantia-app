@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/ui/data-table";
 import React from "react";
-import { columns } from "./__components/columnsGa";
+import { columns } from "./_components/columnsGa";
 import db from "@/db/db";
 import { currentUser } from "@clerk/nextjs/server";
 
