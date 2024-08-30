@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Consultores {
+  xata_id        String   @unique(map: "_pgroll_new_User_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int      @default(0)
+  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
+  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
+  name           String
+  filial         String
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model garantia {
+  xata_updatedat DateTime @default(now()) @db.Timestamptz(6)
+  xata_id        String   @unique(map: "_pgroll_new_garantia_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version   Int      @default(0)
+  xata_createdat DateTime @default(now()) @db.Timestamptz(6)
+  filial         String?
+  perguntas      Json     @default("{}") @db.Json
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model erro_consultor {
+  xata_createdat  DateTime @default(now()) @db.Timestamptz(6)
+  xata_updatedat  DateTime @default(now()) @db.Timestamptz(6)
+  xata_id         String   @unique(map: "_pgroll_new_erro_consultor_xata_id_key") @default(dbgenerated("('rec_'::text || (xata_private.xid())::text)"))
+  xata_version    Int      @default(0)
+  data            DateTime @db.Timestamptz(6)
+  os              Int
+  consultor       String
+  categoria       String
+  orientacao      String
+  filial          String?
+  inconsistencias String
+  status          Boolean  @default(false)
+}
