@@ -269,7 +269,7 @@ async function DashBoard({
   return (
     <div className="space-y-10 w-full">
       <div className="grid grid-cols-1 md:grid-cols-6 gap-10 w-full">
-        <div className="col-span-6 md:col-span-2">
+        <div className="col-span-6 md:col-span-2 gap-2">
           <DashFilter consultores={consultores} />
         </div>
         <div className="col-span-6 md:col-span-2">
