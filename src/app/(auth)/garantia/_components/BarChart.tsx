@@ -4,7 +4,6 @@ import React from "react";
 import {
   BarChart,
   Bar,
-  Rectangle,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -17,12 +16,13 @@ import {
 interface ExampleProps {
     data: {
       name: string;
-      uv: number;
-      pv: number;
+      pendente: number;
+      concluido: number;
     }[];
   }
   
-  const Example: React.FC<ExampleProps> = ({ data }) => {
+  const Barchart: React.FC<ExampleProps> = ({ data }) => {
+    console.log(data)
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart
@@ -39,11 +39,12 @@ interface ExampleProps {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="uv" fill="#8884d8" />
-        <Bar dataKey="pv" fill="#82ca9d" />
+        {/*cor: #8884d8 */}
+        <Bar dataKey="pendente" fill="#ff6961" />
+        <Bar dataKey="concluido" fill="#82ca9d" />
       </BarChart>
     </ResponsiveContainer>
   );
 };
 
-export default Example;
+export default Barchart;
