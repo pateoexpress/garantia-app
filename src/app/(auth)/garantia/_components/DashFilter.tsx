@@ -78,7 +78,7 @@ function DashFilter({ consultores }: DashFilterProps) {
         </Select>
       </div>
       <div>
-        <Button onClick={clearFilters} variant="outline" className="w-[200px]">
+        <Button onClick={clearFilters} variant="outline" className="w-[180px]">
           Limpar Filtros
         </Button>
       </div>
