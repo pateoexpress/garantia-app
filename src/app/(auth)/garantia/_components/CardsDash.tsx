@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardContent,
 } from "@/components/ui/card";
+import { FileCheck2, FileX2 } from "lucide-react";
 
 type DashboardCardProps = {
   title: string;
@@ -21,13 +22,22 @@ export default function DashboardCard({
     <Card>
       <CardHeader>
         <CardTitle>
-          <div className="flex flex-row items-center gap-5">
-            {title}{" "}
-            <span
-              className={`inline-block w-2 h-2 rounded-full ${
-                subtitle === "pending" ? "bg-yellow-500" : "bg-green-500"
-              } mr-2`}
-            />
+          <div className="flex flex-row items-center justify-between">
+            <div>
+              {title}{" "}
+              <span
+                className={`inline-block w-2 h-2 rounded-full ${
+                  subtitle === "pending" ? "bg-yellow-500" : "bg-green-500"
+                } mr-2`}
+              />
+            </div>
+            <div>
+              {subtitle === "pending" ? (
+                <FileX2 size={32} className="text-red-500" />
+              ) : (
+                <FileCheck2 size={32} className="text-green-500" />
+              )}
+            </div>
           </div>
         </CardTitle>
       </CardHeader>
